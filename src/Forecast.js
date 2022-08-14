@@ -1,5 +1,6 @@
 import React from "react";
 import "./index.css";
+import Axios from "axios";
 import First from "./First";
 import Second from "./Second";
 import Three from "./Three";
@@ -7,6 +8,14 @@ import Fourth from "./Fourth";
 import Fifth from "./Fifth";
 
 export default function Forecast() {
+  function handleEvent(response) {
+    console.log(response.data);
+  }
+  let longitude = 40.7;
+  let latitude = 74;
+  let myKey = "7db589669794c40edb745ea0a4fe919c";
+  let apiUrl = `https://api.openweathermap.org/data/3.0/onecall?lat=${latitude}&lon=${longitude}&appid=${myKey}`;
+  Axios.get(apiUrl).then(handleEvent);
   let forecastShow = {
     firstDay: "Fri",
     secondDay: "Sat",

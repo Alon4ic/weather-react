@@ -1,7 +1,6 @@
 
 import React from "react";
 import "./index.css";
-import Search from "./Search";
 import Show from "./Show";
 import Forecast from "./Forecast";
 import Footer from "./Footer";
@@ -24,8 +23,7 @@ export default function App() {
     <div className="App">
       <div className="wraper">
         <div className="container">
-          <Search />
-          <Show value={weatherShow} />
+          <Show defaultCity="Tokyo" />
           <Forecast value={weatherShow} />
           <Footer />
         </div>
