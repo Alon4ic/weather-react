@@ -23,7 +23,7 @@ export default function App() {
     <div className="App">
       <div className="wraper">
         <div className="container">
-          <Show defaultCity="Tokyo" />
+          <Show defaultCity="Rivne" />
           <Forecast value={weatherShow} />
           <Footer />
         </div>

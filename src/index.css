@@ -178,14 +178,22 @@ a:hover {
   display: flex;
   justify-content: center;
 }
-.temperature-link-c,
-.temperature-link-f {
+.unit,
+.imperial {
   padding: 5px 2px;
   color: #162c38;
   font-size: 20px;
   font-weight: 600;
   line-height: 10px;
+  text-decoration: none;
 }
+.unit:hover,
+.imperial:hover {
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+
 .temp-text {
   margin: -10px 0 0 0;
 }
@@ -350,10 +358,11 @@ a:hover {
   .meaning {
     margin-left: -4px;
   }
-  .temperature-link-c,
-  .temperature-link-f {
+  .unit,
+  .imperial {
     font-size: 16px;
   }
+  
   .temp-text {
     margin-top: -2px;
   }
