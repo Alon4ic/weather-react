@@ -1,30 +1,65 @@
 import React from "react";
 import "./index.css";
-import imagefirst from "../src/images/01d.png";
+
 import imagehumidity from "../src/images/humidity.png";
 import imagewind from "../src/images/wind.png";
 import imageprecipitation from "../src/images/precipitation.png";
 import imagebarometer from "../src/images/barometer.png";
 
 export default function First(props) {
+  function maxTemp() {
+    let temperature = Math.round(props.data.temp.max);
+    return `${temperature}`;
+  }
+  function minTemp() {
+    let temperature = Math.round(props.data.temp.min);
+    return `${temperature}`;
+  }
+  function humidity() {
+    let currentHumidity  = Math.round(props.data.humidity);
+    return `${currentHumidity}`;
+  }
+  function wind() {
+    let currentWind  = Math.round(props.data.wind_speed);
+    return `${currentWind}`;
+  }
+  function precipitation() {
+    let pop = Math.round(props.data.pop * 100);
+    return `${pop}`
+  }
+  function day() {
+    let date = new Date(props.data.dt * 1000);
+    let day = date.getDay();
+    let days = [
+  		"Sun",
+  		"Mon",
+  		"Tue",
+  		"Wed",
+  		"Thu",
+  		"Fri",
+  		"Sat"
+	];
+  return days[day];
+  }
+  let icon = `icons/${props.data.weather[0].icon}.png`
   return (
     <div className="row forecast-item">
       <div className="col-2">
         <h3 id="day1" className="accordion-day1">
-          {props.value.firstDay}
+          {day()}
         </h3>
         <h3 id="month1" className="accordion-month1">
-          {props.value.threeWeather}
+          {props.data.weather[0].main}
         </h3>
       </div>
       <div className="col-2">
-        <img className="accordion-img img-fluid" src={imagefirst} alt="sunny" />
+        <img className="accordion-img img-fluid" src={icon} alt={props.data.weather[0].main} />
         <p className="accordion-content">
           <strong className="temperature-forecast1-max">
-            {props.value.firstMaxTemp}/
+            {maxTemp()}/
           </strong>
           <span className="temperature-forecast1-min">
-            {props.value.firstMinTemp}
+            {minTemp()}
           </span>
         </p>
       </div>
@@ -34,11 +69,11 @@ export default function First(props) {
           src={imagehumidity}
           alt="Humidity"
         />
-        <p className="accordion-content">{props.value.firstHumidity} %</p>
+        <p className="accordion-content">{humidity()} %</p>
       </div>
       <div className="col-2">
         <img className="accordion-img img-fluid" src={imagewind} alt="wind" />
-        <p className="accordion-content">{props.value.firstWind} mph</p>
+        <p className="accordion-content">{wind()} m/s</p>
       </div>
       <div className="col-2">
         <img
@@ -46,7 +81,7 @@ export default function First(props) {
           src={imageprecipitation}
           alt="precipitation"
         />
-        <p className="accordion-content">{props.value.firstPrecipitation} %</p>
+        <p className="accordion-content">{precipitation()} %</p>
       </div>
       <div className="col-2">
         <img
@@ -54,7 +89,7 @@ export default function First(props) {
           src={imagebarometer}
           alt="barometer"
         />
-        <p className="accordion-content">{props.value.firstBarometer}</p>
+        <p className="accordion-content">{props.data.pressure}</p>
       </div>
     </div>
   );

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Weather from "./Weather";
+import Forecast from "./Forecast";
 import imageSearch from "../src/images/search.png";
 import axios from "axios";
 import "./index.css";
@@ -7,10 +8,14 @@ import "./index.css";
 
 export default function Show(props) {
    const [weatherData, setWeatherData] = useState({ready: false});
-   const [city, setCity] = useState(props.defaultCity)
+   const [city, setCity] = useState(props.defaultCity);
+
   function handleEvent(response) {
+    console.log(response.data);
     setWeatherData({
       ready: true,
+      lat: response.data.coord.lat,
+      lon: response.data.coord.lon,
       temperature: response.data.main.temp,
       minTemperature: response.data.main.temp_min,
       city: response.data.name,
@@ -19,7 +24,7 @@ export default function Show(props) {
       humidity: response.data.main.humidity,
       wind: response.data.wind.speed,
       icon: `icons/${response.data.weather[0].icon}.png`,
-      date: new Date(response.data.dt * 1000)
+      date: new Date(response.data.dt * 1000),
     });
   }
 
@@ -39,9 +44,9 @@ export default function Show(props) {
     setCity(event.target.value);
   }
 
-  if(weatherData.ready) {
+  if (weatherData.ready) {
     return (
-      <><div className="search-inner">
+      <div className="search-inner">
         <form className="form-inner" id="search-form" onSubmit={handleSubmit}>
           <div>
             <input
@@ -57,7 +62,8 @@ export default function Show(props) {
             <img className="search-img" src={imageSearch} alt="search" />
           </button>
         </form>
-      </div><Weather data={weatherData} /></>
+        <Weather data={weatherData} /><Forecast data={weatherData} />
+      </div>
   );
   } else {
   search();
