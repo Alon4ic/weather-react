@@ -32,6 +32,8 @@ export default function Forecast(props) {
             <First data={dailyForecast} />
           </div>
         )
+        } else {
+          return null;
         }
       })}
      
@@ -46,10 +48,7 @@ export default function Forecast(props) {
   let apiKey = "7db589669794c40edb745ea0a4fe919c";
   let apiUrl = `https://api.openweathermap.org/data/3.0/onecall?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(handleEvent);
-  axios.get('/user/12345')
-  .catch(function (error) {
-    // console.log(error.toJSON());
-  });
+  
 
   return null;
   
