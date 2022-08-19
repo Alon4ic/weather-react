@@ -41,9 +41,9 @@ if (!imperial){
                   {Math.round(props.data.minTemperature)}
                 </span>
                 <div className="meaning">
-                  <a href="/" onClick={changeToCelsius} id="celcius" className="unit text-primary">C°</a>
+                  <a href="/" onClick={changeToCelsius} id="celcius" className="unit">C°</a>
                   <p className="temp-text">/</p>
-                  <a href="/" onClick={changeToFahrenheit} id="fahrenheit" className="imperial">F°</a>
+                  <a href="/" onClick={changeToFahrenheit} id="fahrenheit" className="imperial text-primary">F°</a>
                 </div>
               </div>
             </div>
@@ -91,9 +91,9 @@ if (!imperial){
                   {Math.round(props.data.minTemperature * 9/5 + 32)}
                 </span>
                 <div className="meaning">
-                  <a href="/" onClick={changeToCelsius} id="celcius" className="unit">C°</a>
+                  <a href="/" onClick={changeToCelsius} id="celcius" className="unit text-primary">C°</a>
                   <p className="temp-text">/</p>
-                  <a href="/" onClick={changeToFahrenheit} id="fahrenheit" className="imperial text-primary">F°</a>
+                  <a href="/" onClick={changeToFahrenheit} id="fahrenheit" className="imperial">F°</a>
                 </div>
               </div>
             </div>
