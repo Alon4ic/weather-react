@@ -73,7 +73,7 @@ export default function First(props) {
       </div>
       <div className="col-2">
         <img className="accordion-img img-fluid" src={imagewind} alt="wind" />
-        <p className="accordion-content">{wind()} m/s</p>
+        <p className="accordion-content">{wind()} km/h</p>
       </div>
       <div className="col-2">
         <img

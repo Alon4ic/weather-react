@@ -57,7 +57,7 @@ if (!imperial){
             <br />
             <strong className="wind">
               Wind: <span className="wind-meaning" id="wind"></span>
-              {Math.round(props.data.wind)} m/s
+              {Math.round(props.data.wind)} km/h
             </strong>
           </div>
         </div>
